@@ -1,0 +1,4 @@
+rootProject.name='AndroidLabs'
+include ':SpyWorkmanager', ':FileEncryptor'
+include ':SpyService'
+include ':WifiScanner'

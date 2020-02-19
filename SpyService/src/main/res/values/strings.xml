@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Spy service</string>
+    <string name="service_is_running">Service is running</string>
+    <string name="service_is_not_running">Service is not running</string>
+    <string name="service_already_running">Service is already running</string>
+    <string name="service_not_running_yet">Service is not running yet</string>
+    <string name="start_service">Start service</string>
+    <string name="stop_service">Stop service</string>
+
+
+</resources>

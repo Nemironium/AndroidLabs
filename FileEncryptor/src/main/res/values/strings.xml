@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">File Encryptor</string>
+    <string name="granted">Permissions granted.</string>
+    <string name="denied">Permissions denied.</string>
+    <string name="not_mounted">External storage is not mounted. Application will not work.</string>
+    <string name="error_encrypt">Error occurred in native encryption function. Try again</string>
+    <string name="error_decrypt">Error occurred in native decryption function. Try again</string>
+    <string name="crypt_created">crypt directory was created</string>
+    <string name="decrypt_created">decrypt directory was created</string>
+    <string name="encrypt_success">Encryption successful</string>
+    <string name="decrypt_success">Decryption successful</string>
+    <string name="cant_decrypt">You cannot decrypt that file</string>
+    <string name="error_path">Wrong path to file. Try another file.</string>
+    <string name="select_encrypt">Select file to encrypt:</string>
+    <string name="choose_file">Choose file…</string>
+    <string name="encrypt">Encrypt</string>
+    <string name="decrypt">Decrypt</string>
+    <string name="select_decrypt">Select file to decrypt:</string>
+    <string name="change_password">Change password</string>
+    <string name="refresh_files">Refresh files</string>
+    <string name="password_selection">You choosed password selection item!</string>
+    <string name="select_file">Select a file to encrypt</string>
+</resources>
