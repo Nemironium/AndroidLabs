@@ -1,4 +1,4 @@
-package io.nemiron.spyapplication.util
+package io.nemiron.spyapplication.spymodule
 
 import android.app.ActivityManager
 import android.content.Context
@@ -7,9 +7,9 @@ import android.content.IntentFilter
 import android.os.BatteryManager
 import java.util.*
 
-class SpyUtils {
-    fun getBatteryPct(context: Context): Int {
-        val batteryStatus: Intent? = IntentFilter(Intent.ACTION_BATTERY_CHANGED).let {
+class SpyClass : SpyInterface {
+    override fun getBatteryPct(context: Context): Int {
+        val batteryStatus = IntentFilter(Intent.ACTION_BATTERY_CHANGED).let {
             context.registerReceiver(null, it)
         }
 
@@ -22,7 +22,7 @@ class SpyUtils {
         }
     }
 
-    fun getAvailableMemory(context: Context): Int {
+    override fun getAvailableMemory(context: Context): Int {
         val activityManager = context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
         return ActivityManager.MemoryInfo().let { memoryInfo ->
             activityManager.getMemoryInfo(memoryInfo)
@@ -30,5 +30,6 @@ class SpyUtils {
         }
     }
 
-    fun getCurrentDate() = Calendar.getInstance().time.toString()
+    override fun getCurrentDate(): String
+            = Calendar.getInstance().time.toString()
 }

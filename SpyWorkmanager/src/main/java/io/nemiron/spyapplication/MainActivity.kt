@@ -1,15 +1,36 @@
 package io.nemiron.spyapplication
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.work.*
+import io.nemiron.spyapplication.spymodule.SpyInterface
+import io.nemiron.spyapplication.spymodule.loadModule
 import io.nemiron.spyapplication.worker.BackgroundSpyWorker
+import org.apache.commons.io.FileUtils
+import java.io.File
 import java.util.concurrent.TimeUnit
 
 
 class MainActivity : AppCompatActivity() {
 
+    private var spyClass: SpyInterface? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        spyClass = loadModule<SpyInterface>(
+            "io.nemiron.spyapplication.spymodule.SpyClass",
+            copyDexFile("spyModule.dex"),
+            cacheDir,
+            classLoader
+        )
+
+        if (spyClass != null) {
+            Log.d("LOG_TAG", "${spyClass!!.getAvailableMemory(this)} MB")
+            Log.d("LOG_TAG", "${spyClass!!.getBatteryPct(this)} %")
+            Log.d("LOG_TAG", spyClass!!.getCurrentDate())
+        }
+
         super.onCreate(savedInstanceState)
         startTask()
     }
@@ -34,6 +55,14 @@ class MainActivity : AppCompatActivity() {
                 .enqueueUniquePeriodicWork("spyJob", ExistingPeriodicWorkPolicy.KEEP, spyWork)
     }
 
-    // отменяем работу по созданному тэгу
+    // метод для отмены работы по созданному тэгу
     private fun stopTask() = WorkManager.getInstance(applicationContext).cancelAllWorkByTag("SPYWORK")
+
+    // метод для копирования файла из assets в директорию приложения
+    private fun copyDexFile(name: String) = FileUtils.copyToFile(assets.open(name), File(sourceFile(name)))
+        .let { File(sourceFile(name)) }
+
+    // метод для получения пути директории, в которую будет скопирован .dex файл
+    private fun sourceFile(name: String) = packageManager.getPackageInfo(packageName, 0)
+        .applicationInfo.dataDir + "/files/" + name
 }

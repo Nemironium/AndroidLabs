@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/FileEncryptor" />
             <option value="$PROJECT_DIR$/SpyService" />
             <option value="$PROJECT_DIR$/SpyWorkmanager" />
+            <option value="$PROJECT_DIR$/SpyWorkmanager/SpyModule" />
             <option value="$PROJECT_DIR$/WifiScanner" />
           </set>
         </option>

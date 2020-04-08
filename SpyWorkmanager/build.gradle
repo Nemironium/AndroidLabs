@@ -58,6 +58,9 @@ dependencies {
     // Okhttp3
     implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
 
+    // for files copying
+    implementation "commons-io:commons-io:2.6"
+
     // Testing
     testImplementation "junit:junit:$junit_version"
     androidTestImplementation "androidx.test.ext:junit:1.1.1"
