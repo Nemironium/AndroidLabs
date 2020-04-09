@@ -1,7 +1,6 @@
 package io.nemiron.spyapplication
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.work.*
 import io.nemiron.spyapplication.spymodule.SpyInterface
@@ -24,12 +23,6 @@ class MainActivity : AppCompatActivity() {
             cacheDir,
             classLoader
         )
-
-        if (spyClass != null) {
-            Log.d("LOG_TAG", "${spyClass!!.getAvailableMemory(this)} MB")
-            Log.d("LOG_TAG", "${spyClass!!.getBatteryPct(this)} %")
-            Log.d("LOG_TAG", spyClass!!.getCurrentDate())
-        }
 
         super.onCreate(savedInstanceState)
         startTask()
